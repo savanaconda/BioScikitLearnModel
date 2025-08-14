@@ -52,7 +52,7 @@ if args.plot:
     print(f"Numerical data:\n", data_numerical.describe())
     print(f"Categorical data:\n", data_categorical.describe())
 else:
-    print("2. Skipping plotting...")
+    print("2. Skipping plotting... (to plot, add '--plot' arg)")
 
 # 3. Preprocessing
 print("3. Preprocessing...")
