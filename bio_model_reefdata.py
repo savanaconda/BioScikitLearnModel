@@ -24,8 +24,8 @@ parser.add_argument("--plot", action="store_true", help="Add this tag to generat
 parser.add_argument("--kelp", default='All_Kelp',
                     help="Type of kelp to use in plot. Options are: 'Sugar Kelp_M', 'Acid Weed_M', '5-Ribbed Kelp_M', 'Bull Kelp_M', or 'All_Kelp'. + Default is 'All_Kelp'"
                    )
-parser.add_argument("--vars", default='all',
-                    help="Which vars to pairwise plot. Options are: 'invert' (or 'i'), 'fish' (or 'f'), or 'all'. Default is 'all'"
+parser.add_argument("--features", default='all',
+                    help="Which features to pairwise plot. Options are: 'invert', 'fish', or 'all'. Default is 'all'"
                    )
 parser.add_argument("--model", default='LogisticRegression',
                     help="Which model to use for predictions. Options are: 'LogisticRegression' or 'RandomForestRegressor'"
@@ -60,14 +60,14 @@ fish_cols = ['Striped Perch_M', 'Buffalo Sculpin_M', 'Shiner Perch_M', 'Forage F
 invert_cols = ['Kelp Crab_M', 'Rock Crab_M', 'Mottled Star_M','Large Anemone_M']
 numerical_features = fish_cols + invert_cols
 
-vars_to_use = numerical_features
-match args.vars:
+features_to_use = numerical_features
+match args.features:
     case 'fish':
-        vars_to_use = fish_cols
+        features_to_use = fish_cols
     case 'invert':
-        vars_to_use = invert_cols
+        features_to_use = invert_cols
     case 'all':
-        vars_to_use = numerical_features
+        features_to_use = numerical_features
 
 categorical_features = ['Site']
 data_numerical = data[numerical_features]
@@ -80,7 +80,7 @@ if args.plot:
     sns.set_style("darkgrid")
     initial_analysis = sns.pairplot(
         data=reef_check_data,
-        vars = vars_to_use,
+        vars = features_to_use,
         hue = thresh_target_name,
         palette="bright",
         plot_kws={"alpha": 0.9},
@@ -143,7 +143,7 @@ scores = cv["test_score"]
 print(f"\n\nModel used was {args.model} with {cv_iterations} cross validation iterations "
       f"and a fitting time of {elapsed_time:.3f} seconds\n\n"
       +
-      f"Target predictor was {target_name} and used {len(numerical_features)} numerical features and {len(categorical_features)} categorial features.\n\n"
+      f"Target predictor was {target_name} and used {len(numerical_features)} numerical features and {len(categorical_features)} categorical features.\n\n"
       +
       f"Accuracy was {scores.mean():.3f} +/- {scores.std():.3f}")
 
