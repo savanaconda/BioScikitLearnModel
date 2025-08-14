@@ -11,6 +11,9 @@ from sklearn.model_selection import train_test_split
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import OneHotEncoder, StandardScaler
 
+# Original model set up with housing data to ensure that model structure was working. This structure was based on that of the
+# MOOC course on Machine Learning in Python with Scikit-Learn: https://www.fun-mooc.fr/en/courses/machine-learning-python-scikit-learn/
+
 # 1. Import and set up data
 print("1. Importing and set up data...")
 # Data set from https://github.com/INRIA/scikit-learn-mooc/blob/main/datasets/ames_housing_no_missing.csv
