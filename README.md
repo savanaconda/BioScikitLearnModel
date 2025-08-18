@@ -1,12 +1,10 @@
-# BioScikitLearnModel
-Model(s) on bio data utilizing scikit-learn python library.
+# ReefCheck_ScikitLearnModel
+Model(s) on kelp density data utilizing scikit-learn python library.
 
 The main file for this work is **bio_model_reefdata.py**. Main libraries used are matplotlib, pandas, seaborn and sklearn. I used venv for package management, see full package list in Additonal Notes section below.
 
 
-# BioScikitLearnModel
-Model(s) on bio data utilizing scikit-learn python library.
-
+## Intro
 This model uses data on the Kelp Forests in Washington State from [Reef Check Foundation](https://www.reefcheck.org/). This data was collected by volunteer divers and contains the density of species of algae, fish, and invertebrates at various designated sites around Washington state. This data was also collected in California and Oregon, but in this analysis, I chose to focus solely on Washington.
 
 This model predicts the mean density of the 4 most recorded species of kelp in the dataset using the mean densities of the 4 most recorded species of fish, 4 most recorded species of invertebrates, and the site names. The model used this 8 numerical features and 1 categorical feature.
@@ -58,7 +56,7 @@ I preprocessed the data using [OneHotEncoder](https://scikit-learn.org/stable/mo
 
 ### 5. Running the models (with cross validation)
 
-Finally, I actually ran trained and tested the data with cross validation of 10 different model runs. I used the cross_validate method from sklearn.model_selection which handles splitting of training and testing data. I experimented with two different model types: [**LogisticRegression**](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html) and [**RandomForestRegressor**](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html).
+Finally, I trained and tested with cross validation of 10 different model runs. I used the cross_validate method from sklearn.model_selection which handles splitting of training and testing data. I experimented with two different model types: [**LogisticRegression**](https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LogisticRegression.html) and [**RandomForestRegressor**](https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html).
 
 #### Results
 
@@ -82,7 +80,7 @@ It is also important to note that the random forest regressor used a continuous 
 
 Overall, even with logistic regression having the 62.5% accuracy, this is not the best model. This is perhaps not surprising that that fish and invertebrate densities do not provide a full picture for how dense a kelp forest might become. If I did follow ups to this work, I would explore the literature more and gather additional data to select more impactful features. Some ideas for this might be the ocean temperature, average level of sunlight, or the measures of water nutrient density at the sites.
 
-Also this was a fairly basic analysis. Much more work could be done to explore better model types, tweak model parameters, or make adjustments to data such as useful a different imputation strategy. For me personally, this was a fun exercise to explore scientific data and make my own models as a follow along the [MOOC Machine Learning in Python with Scikit-Learn course](https://www.fun-mooc.fr/en/courses/machine-learning-python-scikit-learn/).
+Also this was a fairly basic analysis. Much more work could be done to explore better model types, tweak model parameters, or make adjustments to data such as useful a different imputation strategy. Personally, this was a fun exercise to explore scientific data and make my own models as a follow along the [MOOC Machine Learning in Python with Scikit-Learn course](https://www.fun-mooc.fr/en/courses/machine-learning-python-scikit-learn/).
 
 Thank you to MOOC and Reef Check for providing the resources that allowed me to do this project :)
 
